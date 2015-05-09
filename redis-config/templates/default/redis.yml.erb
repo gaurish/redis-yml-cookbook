@@ -1,0 +1,13 @@
+default: &defaults
+  port: 6379
+  driver: hiredis
+  namespace: <%= @rails_env %>
+<%= @rails_env %>:
+  <<: *defaults
+  host: <%= @redis[:host] %>
+<%= @rails_env %>_slave:
+  <<: *defaults
+  host: <%= @redis[:host] %>
+local:
+  <<: *defaults
+  host: <%= @redis[:host] %>
